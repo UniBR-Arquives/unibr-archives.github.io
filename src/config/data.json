@@ -2,9 +2,30 @@
     "project": "UNIBR ARCHIVES",
     "author": "MISTER WEST",
 
-    "arr": [
+    "main-site": {
+        "title": "UNIBR ARCHIVES"
+    },
+
+    "navigation": [
         {
-            "title": "UNIBR ARCHIVES"
+            "text": "Home",
+            "href": "/index.html"
+        },
+        {
+            "text": "Projetos",
+            "href": "/"
+        },
+        {
+            "text": "Personagens",
+            "href": "/"
+        },
+        {
+            "text": "Redes Sociais",
+            "href": "/"
+        },
+        {
+            "text": "Documentação",
+            "href": "/"
         }
-        ]
+    ]
 }

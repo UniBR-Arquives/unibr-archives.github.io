@@ -1,70 +1,68 @@
-function navLinks() {
-    const ContentNavLinks = document.getElementById("nav");
-    function fetchNavLinks() {
-        fetch("/src/config/nav.json")
-           .then(r => {
-            if(!r.ok) {
-                throw new Error("Arquivo de Navegação Não Encontrado");
-            }
+class MySite {
+    constructor() {
+        this.mainNavLink = document.getElementById("nav");
+        this.mainLink = document.getElementById("script-name-main");
 
-            return r.json();
-
-           })
-           .then(data => {
-            if(Array.isArray(data)) {
-                NavLinksP(data);
-            }
-           })
-           .catch(err => {
-            ContentNavLinks.innerHTML = 'ERRO: ' + err.message;
-           })
+        this.srcNav = "/src/config/data.json";
+        this.ArrayNav = "navigation";
+        this.MainSite = "main-site";
     }
 
-    function NavLinksP(links) {
-        ContentNavLinks.innerHTML = '';
-        links.forEach(element => {
-            let anchor;
-            if(element['text'] && element['href']) {
-                anchor = document.createElement('a');
-                anchor.textContent = element['text'];
-                anchor.href = element['href'];
-                ContentNavLinks.appendChild(anchor);
-
-            } else {
-                anchor = document.createElement('a');
-                anchor.textContent = "HOME";
-                anchor.href = "/index.html"
-                ContentNavLinks.appendChild(anchor);
-            }
-        });
+    setupSite() {
+        this.setupNavLinks(this.mainNavLink, this.srcNav, this.ArrayNav);
+        this.setupMain(this.mainLink, this.srcNav, this.MainSite)
     }
-    fetchNavLinks();
-}
 
+    fetchData(endpoint) {
+        return fetch(endpoint)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erro ao Abrir Arquivo de configuração`);
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error("Erro ao buscar dados:", error);
+                throw error;
+            });
+    }
 
-function baseIndex() {
-    const ContentNavLinks = document.getElementById("nav");
-    function fetchNavLinks() {
-        fetch("/src/config/nav.json")
-           .then(r => {
-            if(!r.ok) {
-                throw new Error("Arquivo de Navegação Não Encontrado");
-            }
+    setupMain(navLink, srcNav, nameField) {
+        if(navLink) {
+            this.fetchData(srcNav)
+              .then(data => {
+                if(data[nameField]['title']) {
+                    navLink.textContent = data[nameField]['title']
+                }
+              })
+        }
+    }
 
-            return r.json();
-
-           })
-           .then(data => {
-            if(Array.isArray(data)) {
-                NavLinksP(data);
-            }
-           })
-           .catch(err => {
-            ContentNavLinks.innerHTML = 'ERRO: ' + err.message;
-           })
+    setupNavLinks(navLink, srcNav, nameArray) {
+        if(navLink) {
+            this.fetchData(srcNav)
+              .then(data => {
+                if(Array.isArray(data[nameArray])) {
+                    navLink.innerHTML = '';
+                    data[nameArray].forEach(element => {
+                        let anchor;
+                        if(element.text && element.href) {
+                            anchor = document.createElement('a');
+                            anchor.textContent = element.text;
+                            anchor.href = element.href;
+                            navLink.appendChild(anchor);
+                        }
+                    });
+                }
+              })
+              .catch(err => {
+                navLink.innerHTML = 'ERRO: ' + err.message;
+              })
+        }
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    navLinks();
-})
+    const mainSite = new MySite();
+    mainSite.setupSite();
+});

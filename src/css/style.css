@@ -12,7 +12,7 @@ html {
   }
   
   body {
-    background-color: rgb(26, 25, 25);
+    background-color: rgb(0, 0, 0);
     min-height: 100vh;
     overflow-x: hidden; /* Impede rolagem horizontal */
   }
@@ -31,6 +31,8 @@ html {
 .main-site h1 {
     font-size: 1.8rem;
     margin: 0;
+    color: black;
+    display: block;
   }
   
 .main-site a {
@@ -52,6 +54,16 @@ html {
     gap: 15px;
   }
 
+.welcome-area {
+  padding: 30px;
+  align-items: center;
+  text-align: center;
+}
+
+.welcome-area .img-welcome {
+  padding: 30px;
+  width: 700px;
+}
 
 @font-face {
     font-family: 'Lemmon Milk';
