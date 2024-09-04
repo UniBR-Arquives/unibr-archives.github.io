@@ -1,0 +1,68 @@
+html {
+    scroll-behavior: smooth;
+  }
+  
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: "Lemmon Milk", "Poppins", sans-serif;
+    
+  }
+  
+  body {
+    background-color: rgb(26, 25, 25);
+    min-height: 100vh;
+    overflow-x: hidden; /* Impede rolagem horizontal */
+  }
+  
+.main-site {
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    max-width: 1700px; /* Limita a largura máxima */
+    margin: 0 auto;
+  }
+  
+.main-site h1 {
+    font-size: 1.8rem;
+    margin: 0;
+  }
+  
+.main-site a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+.main-site a:hover {
+    color: #ff0000;
+  }
+  
+.main-site span:hover {
+    color: black;
+  }
+  
+.nav {
+    display: flex;
+    gap: 15px;
+  }
+
+
+@font-face {
+    font-family: 'Lemmon Milk';
+    src: url('/src/fonts/lemmon-milk/LEMONMILK-Regular.otf') format('opentype');
+    font-style: normal;
+    font-weight: normal;
+  }
+  
+@font-face {
+    font-family: 'Lemmon Milk';
+    src: url('/src/fonts/lemmon-milk/LEMONMILK-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
