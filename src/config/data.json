@@ -2,8 +2,8 @@
     "project": "UNIBR ARCHIVES",
     "author": "MISTER WEST",
 
-    "main-site": {
-        "title": "UNIBR ARCHIVES"
+    "main": {
+        "title": "UniBR ARCHIVES"
     },
 
     "navigation": [

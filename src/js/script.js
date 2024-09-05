@@ -1,68 +1,60 @@
-class MySite {
-    constructor() {
-        this.mainNavLink = document.getElementById("nav");
-        this.mainLink = document.getElementById("script-name-main");
-
-        this.srcNav = "/src/config/data.json";
-        this.ArrayNav = "navigation";
-        this.MainSite = "main-site";
+var Main = /** @class */ (function () {
+    function Main(srcName) {
+        if (srcName === void 0) { srcName = undefined; }
+        this.mainNameSite = srcName;
     }
-
-    setupSite() {
-        this.setupNavLinks(this.mainNavLink, this.srcNav, this.ArrayNav);
-        this.setupMain(this.mainLink, this.srcNav, this.MainSite)
-    }
-
-    fetchData(endpoint) {
-        return fetch(endpoint)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Erro ao Abrir Arquivo de configuração`);
-                }
-                return response.json();
-            })
-            .catch(error => {
-                console.error("Erro ao buscar dados:", error);
-                throw error;
-            });
-    }
-
-    setupMain(navLink, srcNav, nameField) {
-        if(navLink) {
-            this.fetchData(srcNav)
-              .then(data => {
-                if(data[nameField]['title']) {
-                    navLink.textContent = data[nameField]['title']
-                }
-              })
+    Main.prototype.setup = function (data) {
+        if (this.mainNameSite == undefined)
+            this.mainNameSite = data['main']['title'];
+        this.setupSiteHeader(data, 'nav');
+        this.setupSiteName(data, 'name');
+        this.returnName();
+    };
+    Main.prototype.returnName = function () {
+        var _this = this;
+        document.querySelectorAll(".nameMain").forEach(function (h) { h.textContent = _this.mainNameSite; });
+    };
+    Main.prototype.setupSiteName = function (data, nameId) {
+        var main = document.getElementById(nameId);
+        main.textContent = data['main'].title;
+    };
+    Main.prototype.setupSiteHeader = function (data, navId) {
+        if (Array.isArray(data['navigation'])) {
+            var navLink_1 = document.getElementById(navId);
+            if (navLink_1) {
+                navLink_1.innerHTML = '';
+                data['navigation'].forEach(function (element) {
+                    if (element.text && element.href) {
+                        var anchor = document.createElement('a');
+                        anchor.textContent = element.text;
+                        anchor.href = element.href;
+                        navLink_1.appendChild(anchor);
+                    }
+                });
+            }
+            else {
+                return "Error";
+            }
         }
-    }
-
-    setupNavLinks(navLink, srcNav, nameArray) {
-        if(navLink) {
-            this.fetchData(srcNav)
-              .then(data => {
-                if(Array.isArray(data[nameArray])) {
-                    navLink.innerHTML = '';
-                    data[nameArray].forEach(element => {
-                        let anchor;
-                        if(element.text && element.href) {
-                            anchor = document.createElement('a');
-                            anchor.textContent = element.text;
-                            anchor.href = element.href;
-                            navLink.appendChild(anchor);
-                        }
-                    });
-                }
-              })
-              .catch(err => {
-                navLink.innerHTML = 'ERRO: ' + err.message;
-              })
+    };
+    return Main;
+}());
+function setup() {
+    var main = new Main();
+    fetch("/src/config/data.json")
+        .then(function (r) {
+        if (!r.ok) {
+            throw new Error("Arquivo de configuração não encontrado");
         }
-    }
+        return r.json();
+    })
+        .then(function (data) {
+        if (data) {
+            main.setup(data);
+        }
+    })["catch"](function (err) {
+        console.log("Error", err);
+        throw err;
+    });
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    const mainSite = new MySite();
-    mainSite.setupSite();
-});
+document.addEventListener('DOMContentLoaded', setup);
