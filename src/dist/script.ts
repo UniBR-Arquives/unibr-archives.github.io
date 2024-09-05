@@ -13,7 +13,10 @@ class Main {
     }
 
     returnName() {
-        document.querySelectorAll(".nameMain").forEach(h => {h.textContent = this.mainNameSite})
+        let main = document.querySelectorAll(".nameMain")
+        main.forEach(data => {
+            data.textContent = this.mainNameSite;
+        })
     }
 
     setupSiteName(data, nameId: string) {

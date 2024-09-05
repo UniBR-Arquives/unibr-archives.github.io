@@ -12,7 +12,10 @@ var Main = /** @class */ (function () {
     };
     Main.prototype.returnName = function () {
         var _this = this;
-        document.querySelectorAll(".nameMain").forEach(function (h) { h.textContent = _this.mainNameSite; });
+        var main = document.querySelectorAll(".nameMain");
+        main.forEach(function (data) {
+            data.textContent = _this.mainNameSite;
+        });
     };
     Main.prototype.setupSiteName = function (data, nameId) {
         var main = document.getElementById(nameId);
