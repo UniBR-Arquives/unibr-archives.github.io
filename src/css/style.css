@@ -3,22 +3,21 @@ html {
   }
   
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     color: white;
     font-family: "Lemmon Milk", "Poppins", sans-serif;
     
-  }
+}
   
-  body {
-    background-color: rgb(0, 0, 0);
+body {
+    background-color: rgb(8, 0, 0);
     min-height: 100vh;
     overflow-x: hidden; 
-  }
+
+}
   
 .main-site {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     color: black;
     display: flex;
     justify-content: space-between;
@@ -26,20 +25,20 @@ html {
     padding: 10px 20px;
     max-width: 1700px;
     margin: 0 auto;
-  }
+}
   
 .main-site h1 {
     font-size: 1.8rem;
     margin: 0;
     color: black;
     display: block;
-  }
+}
   
 .main-site a {
     color: rgb(0, 0, 0);
     text-decoration: none;
     transition: color 0.3s ease;
-  }
+}
   
 .main-site a:hover {
     color: #ff0000;
@@ -47,12 +46,12 @@ html {
   
 .main-site span:hover {
     color: black;
-  }
+}
   
 .nav {
     display: flex;
     gap: 15px;
-  }
+}
 
 .welcome-area {
   padding: 30px;
@@ -73,6 +72,83 @@ html {
 
 .welcome-area span:hover {
   color: #ff0000;
+}
+
+
+/* Ajustes gerais para a seção sobre */
+.about {
+  text-align: center;
+  position: relative;
+}
+
+.about span {
+  color: red;
+}
+
+.box-about {
+  color: #ffffff;
+  margin-top: 10px;
+  background-color: #000000;
+  flex: 1 1 500px; 
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box-about img {
+  width: 80%; /* Ajuste a largura da imagem para caber dentro do box */
+  height: auto;
+  align-items: center;
+  justify-self: center;
+  justify-content: center;
+
+}
+
+.box-about:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff0000;
+}
+
+.flex-left {
+  display: flex;
+  justify-content: left; /* Centraliza os itens horizontalmente */
+  align-items: center; /* Alinha verticalmente os itens */
+  gap: 30px; 
+  margin: 0 auto;
+  max-width: 1700px;
+  padding: 100px;
+}
+
+.flex-right {
+  display: flex;
+  justify-content: right; /* Centraliza os itens horizontalmente */
+  align-items: center; /* Alinha verticalmente os itens */
+  gap: 30px;
+  margin: 0 auto;
+  max-width: 1700px;
+  padding: 100px;
+}
+
+
+.imgAbout{
+  width: 800px;
+  border: 5px solid white; /* Define uma borda de 5px na cor branca */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imgAbout:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 15px #e63a3a78;
+
+}
+
+.gifAbout {
+  width: 400px;
+  height: auto;
 }
 
 @font-face {

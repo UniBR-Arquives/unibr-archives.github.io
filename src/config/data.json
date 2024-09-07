@@ -3,7 +3,8 @@
     "author": "MISTER WEST",
 
     "main": {
-        "title": "UniBR ARCHIVES"
+        "title": "UniBR Archives",
+        "game": "Under Night in-Birth"
     },
 
     "navigation": [
@@ -26,6 +27,42 @@
         {
             "text": "Documentação",
             "href": "/"
+        }
+    ],
+    
+    "abouts": [
+        {
+            "title": "COMBOS",
+            "img": "/src/img/index/pixelart/mika-uni2-sprite-attack3.png",
+            "description": "Aqui você encontrará combos de cada personagem para você aprender",
+            "video": "/src/img/gifs/klasfer.gif",
+            "animation": "/src/img/gifs/characters/seth/seth-animation.gif",
+            "align": "left"
+        },
+
+        {
+            "title": "MIXUPS",
+            "img": "/src/img/index/pixelart/orie-uni2-sprite-attack2.png",
+            "description": "Aprenda a manter sua pressão em seus ataques e confundir seu adversário",
+            "video": "/src/img/gifs/fero-vs-jaca.gif",
+            "animation": "/src/img/gifs/characters/orie/orie-animation.gif",
+            "align": "right"
+        },
+        {
+            "title": "Frame Data",
+            "img": "/src/img/index/pixelart/akatsuki-uni2-sprite-attack.png",
+            "description": "Aqui você saberá as frame-datas de todos os personagens ",
+            "video": "/src/img/gifs/framedata.gif",
+            "animation": "/src/img/gifs/characters/aka/akatsuki-animation.gif",
+            "align": "left"
+        },
+        {
+            "title": "Nossa Comunidade",
+            "img": "/src/img/index/pixelart/kaguya-uni2-sprite-attack.png",
+            "description": "Saiba sobre os eventos e notícias da nossa comunidade",
+            "video": "/src/img/gifs/uniexl.gif",
+            "animation": "/src/img/gifs/characters/hyde/hyde-uniel-stance-animation.gif",
+            "align": "right"
         }
     ]
 }
